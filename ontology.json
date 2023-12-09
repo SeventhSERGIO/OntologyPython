@@ -1,0 +1,336 @@
+{
+  "ontology": [
+    {
+      "clase": "top",
+      "mother": null,
+      "properties": [],
+      "relations": [],
+      "individuals": []
+    },
+    {
+      "clase": "objects",
+      "mother": "top",
+      "properties": [],
+      "relations": [],
+      "individuals": []
+    },
+    {
+      "clase": "concrete",
+      "mother": "objects",
+      "properties": [],
+      "relations": [],
+      "individuals": []
+    },
+    {
+      "clase": "abstract",
+      "mother": "objects",
+      "properties": [],
+      "relations": [],
+      "individuals": []
+    },
+    {
+      "clase": "people",
+      "mother": "concrete",
+      "properties": [
+        {
+          "type": "bool",
+          "name": "fun",
+          "value": true,
+          "priority": 0
+        },
+        {
+          "type": "bool",
+          "name": "teach",
+          "value": false,
+          "priority": 0
+        },
+        {
+          "type": "bool",
+          "name": "sport",
+          "value": false,
+          "priority": 0
+        }
+      ],
+      "relations": [],
+      "individuals": []
+    },
+    {
+      "clase": "rooms",
+      "mother": "concrete",
+      "properties": [
+        {
+          "type": "value",
+          "name": "size",
+          "value": "large",
+          "bool": true,
+          "priority": 0
+        }
+      ],
+      "relations": [],
+      "individuals": [
+        {
+          "id": "200",
+          "properties": [],
+          "relations": []
+        },
+        {
+          "id": "201",
+          "properties": [
+            {
+              "type": "value",
+              "name": "size",
+              "value": "small",
+              "bool": true,
+              "priority": 0
+            }
+          ],
+          "relations": []
+        },
+        {
+          "id": "202",
+          "properties": [],
+          "relations": []
+        },
+        {
+          "id": "203",
+          "properties": [],
+          "relations": []
+        }
+      ]
+    },
+    {
+      "clase": "courses",
+      "mother": "abstract",
+      "properties": [
+        {
+          "type": "bool",
+          "name": "easy",
+          "value": true,
+          "priority": 0
+        }
+      ],
+      "relations": [],
+      "individuals": [
+        {
+          "id": "prog",
+          "properties": [
+            {
+              "type": "bool",
+              "name": "easy",
+              "value": false,
+              "priority": 0
+            }
+          ],
+          "relations": [
+            {
+              "type": "value",
+              "subject": "at",
+              "object": [
+                "200",
+                "201"
+              ],
+              "priority": 0
+            }
+          ]
+        },
+        {
+          "id": "ai",
+          "properties": [],
+          "relations": [
+            {
+              "type": "value",
+              "subject": "at",
+              "object": [
+                "201",
+                "202"
+              ],
+              "priority": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "clase": "students",
+      "mother": "people",
+      "properties": [
+        {
+          "type": "bool",
+          "name": "sport",
+          "value": true,
+          "priority": 0
+        },
+        {
+          "type": "bool",
+          "name": "fun",
+          "value": false,
+          "priority": 0
+        },
+        {
+          "type": "imp",
+          "antecedent": "born",
+          "consequent": "study",
+          "value": [true, true],
+          "priority": 5
+        },
+        {
+          "type": "imp",
+          "antecedent": "like",
+          "consequent": "study",
+          "value": [true, true],
+          "priority": 4
+        },
+        {
+          "type": "imp",
+          "antecedent": "work",
+          "consequent": "study",
+          "value": [true, true],
+          "priority": 3
+        }
+      ],
+      "relations": [
+        {
+          "type":"value",
+          "subject":"enrolled",
+          "object": "courses",
+          "value": true,
+          "priority": 0
+        }
+        ],
+      "individuals": [
+        {
+          "id": "pete",
+          "properties": [
+            {
+              "type": "bool",
+              "name": "teach",
+              "value": true,
+              "priority": 0
+            },
+            {
+              "type": "value",
+              "name": "work",
+              "value": "uk",
+              "bool": true,
+              "priority": 0
+            },
+            {
+              "type": "value",
+              "name": "born",
+              "value": "mexico",
+              "bool": true,
+              "priority": 0
+            }
+          ],
+          "relations": [
+            {
+              "type": "value",
+              "subject": "enrolled",
+              "object": "prog", 
+              "value": false,
+              "priority": 0
+            }
+          ]
+        },
+        {
+          "id": "anne",
+          "properties": [
+            {
+              "type": "value",
+              "name": "work",
+              "value": "us",
+              "bool": true,
+              "priority": 0
+            },
+            {
+              "type": "value",
+              "name": "study",
+              "value": "mexico",
+              "bool": true,
+              "priority": 0
+            }
+          ],
+          "relations": [
+            {
+              "type": "value",
+              "subject": "enrolled",
+              "object": [
+                "ai",
+                "prog"
+              ],
+              "value": true,
+              "priority": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "clase": "faculty members",
+      "mother": "people",
+      "properties": [
+        {
+          "type": "bool",
+          "name": "teach",
+          "value": true,
+          "priority": 0
+        }
+      ],
+      "relations": [],
+      "individuals": [
+        {
+          "id": "mary",
+          "properties": [],
+          "relations": [
+            {
+              "type": "value",
+              "subject": "lectures",
+              "object": [
+                "ai"
+              ],
+              "value": true,
+              "priority": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "clase": "library staff",
+      "mother": "people",
+      "properties": [],
+      "relations": [],
+      "individuals": [
+        {
+          "id": "tom",
+          "properties": [
+            {
+              "type": "bool",
+              "name": "sport",
+              "value": true,
+              "priority": 0
+            },
+            {
+              "type": "value",
+              "name": "size",
+              "value": "short",
+              "bool": true,
+              "priority": 0
+            }
+          ],
+          "relations": [
+            {
+              "type": "value",
+              "subject": "lectures",
+              "object": [
+                "prog"
+              ],
+              "value": true,
+              "priority": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
